@@ -20,7 +20,7 @@ namespace IAGUSA.ENTITY
         {
             this.PersonalInformation = new HashSet<PersonalInformation>();
         }
-    
+
         public int id { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string bloodGroup { get; set; }
@@ -30,7 +30,8 @@ namespace IAGUSA.ENTITY
         public string allergiesList { get; set; }
         public string medicalConditionsList { get; set; }
         public string regularMedications { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalInformation> PersonalInformation { get; set; }
     }

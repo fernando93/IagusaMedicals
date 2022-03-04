@@ -278,6 +278,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Email
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.emergencyContact.email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.emergencyContact.email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
@@ -376,6 +391,21 @@
                                 <div>
                                     @Html.EditorFor(model => model.emergencyContactUS.address, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.emergencyContactUS.address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Email
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.emergencyContactUS.email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.emergencyContactUS.email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -594,7 +624,7 @@
                                                     <div class="kt-form__control">
                                                         <a href="javascript:;" data-repeater-delete="" class="btn-sm btn btn-label-danger btn-bold">
                                                             <i class="la la-trash-o"></i>
-                                                            Eliminar
+                                                            Delete
                                                         </a>
                                                     </div>
                                                 </div>

@@ -91,6 +91,7 @@
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmergencyContactUS">
           <Key>
@@ -103,6 +104,7 @@
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -425,14 +427,9 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="EmergencyContact" EntityType="IAGModel.EmergencyContact" />
           <EntitySet Name="EmergencyContactUS" EntityType="IAGModel.EmergencyContactUS" />
           <EntitySet Name="Gender" EntityType="IAGModel.Gender" />
           <EntitySet Name="PersonalInformation" EntityType="IAGModel.PersonalInformation" />
-          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="IAGModel.FK_PersonalInformation_EmergencyContact">
-            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
           <AssociationSet Name="FK_PersonalInformation_EmergencyContactUS" Association="IAGModel.FK_PersonalInformation_EmergencyContactUS">
             <End Role="EmergencyContactUS" EntitySet="EmergencyContactUS" />
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
@@ -451,20 +448,12 @@
             <End Role="CovidVaccineRecord" EntitySet="CovidVaccineRecord" />
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
           </AssociationSet>
+          <EntitySet Name="EmergencyContact" EntityType="IAGModel.EmergencyContact" />
+          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="IAGModel.FK_PersonalInformation_EmergencyContact">
+            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="EmergencyContact">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="addressCountry" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="mobilePhone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="relationship" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="EmergencyContact" ToRole="PersonalInformation" />
-        </EntityType>
         <EntityType Name="EmergencyContactUS">
           <Key>
             <PropertyRef Name="id" />
@@ -477,6 +466,7 @@
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="relationship" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="EmergencyContactUS" ToRole="PersonalInformation" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -505,26 +495,14 @@
           <Property Name="emergencyContactCountryFk" Type="Int32" Nullable="false" />
           <Property Name="emergencyContactUSFk" Type="Int32" Nullable="false" />
           <Property Name="medicalDetailsFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="EmergencyContact" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
           <NavigationProperty Name="EmergencyContactUS" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="PersonalInformation" ToRole="EmergencyContactUS" />
           <NavigationProperty Name="Gender" Relationship="IAGModel.FK_PersonalInformation_Gender" FromRole="PersonalInformation" ToRole="Gender" />
           <NavigationProperty Name="MedicalDetails" Relationship="IAGModel.FK_PersonalInformation_MedicalDetails" FromRole="PersonalInformation" ToRole="MedicalDetails" />
           <Property Name="covidVaccineFK" Type="Int32" />
           <Property Name="recordDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CovidVaccineRecord" Relationship="IAGModel.FK_PersonalInformation_CovidVaccineRecord" FromRole="PersonalInformation" ToRole="CovidVaccineRecord" />
+          <NavigationProperty Name="EmergencyContact" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
         </EntityType>
-        <Association Name="FK_PersonalInformation_EmergencyContact">
-          <End Type="IAGModel.EmergencyContact" Role="EmergencyContact" Multiplicity="1" />
-          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmergencyContact">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PersonalInformation">
-              <PropertyRef Name="emergencyContactCountryFk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PersonalInformation_EmergencyContactUS">
           <End Type="IAGModel.EmergencyContactUS" Role="EmergencyContactUS" Multiplicity="1" />
           <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
@@ -602,6 +580,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EmergencyContact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addressCountry" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mobilePhone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="relationship" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="EmergencyContact" ToRole="PersonalInformation" />
+        </EntityType>
+        <Association Name="FK_PersonalInformation_EmergencyContact">
+          <End Type="IAGModel.EmergencyContact" Role="EmergencyContact" Multiplicity="1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmergencyContact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PersonalInformation">
+              <PropertyRef Name="emergencyContactCountryFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -671,22 +675,10 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="EmergencyContact">
-            <EntityTypeMapping TypeName="IAGModel.EmergencyContact">
-              <MappingFragment StoreEntitySet="EmergencyContact">
-                <ScalarProperty Name="relationship" ColumnName="relationship" />
-                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
-                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
-                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EmergencyContactUS">
             <EntityTypeMapping TypeName="IAGModel.EmergencyContactUS">
               <MappingFragment StoreEntitySet="EmergencyContactUS">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="relationship" ColumnName="relationship" />
                 <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
                 <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
@@ -753,6 +745,20 @@
                 <ScalarProperty Name="SecondDoseCovidVaccine" ColumnName="SecondDoseCovidVaccine" />
                 <ScalarProperty Name="firstDoseDate" ColumnName="firstDoseDate" />
                 <ScalarProperty Name="firstDoseCovidVaccine" ColumnName="firstDoseCovidVaccine" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmergencyContact">
+            <EntityTypeMapping TypeName="IAGModel.EmergencyContact">
+              <MappingFragment StoreEntitySet="EmergencyContact">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
+                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

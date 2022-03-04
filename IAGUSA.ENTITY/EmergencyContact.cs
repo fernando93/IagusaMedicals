@@ -20,7 +20,7 @@ namespace IAGUSA.ENTITY
         {
             this.PersonalInformation = new HashSet<PersonalInformation>();
         }
-    
+
         public int id { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string firstName { get; set; }
@@ -33,6 +33,8 @@ namespace IAGUSA.ENTITY
         public string whatsapp { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string relationship { get; set; }
+        [Required(ErrorMessage = "This value is required")]
+        public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalInformation> PersonalInformation { get; set; }

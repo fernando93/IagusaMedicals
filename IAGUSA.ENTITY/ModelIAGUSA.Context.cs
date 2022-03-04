@@ -30,11 +30,11 @@ namespace IAGUSA.ENTITY
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<EmergencyContact> EmergencyContact { get; set; }
         public virtual DbSet<EmergencyContactUS> EmergencyContactUS { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<PersonalInformation> PersonalInformation { get; set; }
         public virtual DbSet<MedicalDetails> MedicalDetails { get; set; }
         public virtual DbSet<CovidVaccineRecord> CovidVaccineRecord { get; set; }
+        public virtual DbSet<EmergencyContact> EmergencyContact { get; set; }
     }
 }

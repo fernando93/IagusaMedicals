@@ -13,17 +13,17 @@
         <AssociationConnector Association="IAGModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="IAGModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="IAGModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IAGModel.EmergencyContact" Width="1.5" PointX="12.125" PointY="0.625" />
         <EntityTypeShape EntityType="IAGModel.EmergencyContactUS" Width="1.5" PointX="7.5" PointY="2.625" />
         <EntityTypeShape EntityType="IAGModel.Gender" Width="1.5" PointX="7.75" PointY="0.5" />
         <EntityTypeShape EntityType="IAGModel.PersonalInformation" Width="1.5" PointX="9.75" PointY="1.375" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContact" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContactUS" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_Gender" />
         <EntityTypeShape EntityType="IAGModel.MedicalDetails" Width="1.5" PointX="12.875" PointY="4.375" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_MedicalDetails" />
         <EntityTypeShape EntityType="IAGModel.CovidVaccineRecord" Width="1.5" PointX="3.375" PointY="7" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord" />
+        <EntityTypeShape EntityType="IAGModel.EmergencyContact" Width="1.5" PointX="12.25" PointY="0.875" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContact" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

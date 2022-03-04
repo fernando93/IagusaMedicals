@@ -16,7 +16,6 @@ namespace IAGUSA.ENTITY
     public partial class PersonalInformation
     {
         public int id { get; set; }
-
         [Required(ErrorMessage = "This value is required")]
         public string firstName { get; set; }
         [Required(ErrorMessage = "This value is required")]
@@ -42,7 +41,7 @@ namespace IAGUSA.ENTITY
 
         public Nullable<int> covidVaccineFK { get; set; }
         public Nullable<System.DateTime> recordDate { get; set; }
-    
+
         public virtual EmergencyContact EmergencyContact { get; set; }
         public virtual EmergencyContactUS EmergencyContactUS { get; set; }
         public virtual Gender Gender { get; set; }
