@@ -1,0 +1,98 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+}
+/* User Info */
+#user-info .navbar-login {
+    color: #000;
+    padding: 10px;
+    padding-bottom: 0px;
+    width: 305px;
+}
+
+#user-info .user-picture img {
+    height: 87px;
+}
+
+#user-info .user-name {
+    font-weight: bold;
+    text-align: left;
+}
+
+#user-info .user-mail {
+    text-align: left;
+}
+/* DataTables Buttons */
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: left !important;
+}
+
+div.dataTables_wrapper div.btn-toolbar div.dt-buttons {
+    float: right;
+}
+
+@media screen and (max-width: 767px) {
+    .btn-toolbar .dt-buttons {
+        width: auto !important;
+    }
+}
+/* DataTables Paginate*/
+.dataTables_paginate > .pagination > li > a, .dataTables_paginate > .pagination > li > span {
+    color: #333;
+}
+
+.dataTables_paginate > .pagination > .active > a,
+.dataTables_paginate > .pagination > .active > a:focus,
+.dataTables_paginate > .pagination > .active > a:hover,
+.dataTables_paginate > .pagination > .active > span,
+.dataTables_paginate > .pagination > .active > span:focus,
+.dataTables_paginate > .pagination > .active > span:hover {
+    color: #fff;
+}
+/* Footer */
+footer {
+    background-color: #424558;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+    footer p {
+        padding: 10.5px;
+        margin: 0px;
+        line-height: 100%;
+    }
+
+@media (max-width: 768px) {
+    #user-info .navbar-login {
+        margin: 0 auto;
+        padding: 0 10px;
+        width: 95%;
+    }
+
+    #user-info .user-picture img {
+        display: none;
+    }
+
+    #user-info .user-name {
+        color: #999;
+        text-align: center;
+    }
+
+    #user-info .user-mail {
+        color: #999;
+        text-align: center;
+    }
+
+    #user-info .user-logoff {
+        text-align: center;
+    }
+}
+
+.error {
+    color: #ec4758;
+}

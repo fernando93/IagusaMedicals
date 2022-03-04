@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/IagusaMedicals_deploy" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="Data Source=52.42.238.169;Initial Catalog=IAG;Persist Security Info=True;User=MBSS;Password=3NF0RC3R!" />
+  <setParameter name="IAGEntities-Web.config Connection String" value="metadata=res://*/ModelIAG.csdl|res://*/ModelIAG.ssdl|res://*/ModelIAG.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=52.42.238.169;initial catalog=IAG;persist security info=True;user id=MBSS;password=3NF0RC3R!;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+</parameters>
