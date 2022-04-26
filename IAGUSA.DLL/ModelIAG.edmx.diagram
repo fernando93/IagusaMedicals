@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a4f72e248144f1484e0f9abbc705f83" Name="Diagram1">
-        <EntityTypeShape EntityType="IAGModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IAGModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IAGModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="IAGModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IAGModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="6de04d77710645909c3743219e7f02dc" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="IAGModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.AspNetRoles" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.AspNetUserClaims" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.AspNetUserLogins" Width="1.5" PointX="10.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.AspNetUsers" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.CovidVaccineRecord" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.EmergencyContact" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.EmergencyContactUS" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.Gender" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.HostSchool" Width="1.5" PointX="11.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.MedicalDetails" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IAGModel.PersonalInformation" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="IAGModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="IAGModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord" ManuallyRouted="false" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContact" ManuallyRouted="false" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContactUS" ManuallyRouted="false" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="IAGModel.FK_PersonalInformation_MedicalDetails" ManuallyRouted="false" />
         <AssociationConnector Association="IAGModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IAGModel.EmergencyContactUS" Width="1.5" PointX="7.5" PointY="2.625" />
-        <EntityTypeShape EntityType="IAGModel.Gender" Width="1.5" PointX="7.75" PointY="0.5" />
-        <EntityTypeShape EntityType="IAGModel.PersonalInformation" Width="1.5" PointX="9.75" PointY="1.375" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContactUS" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_Gender" />
-        <EntityTypeShape EntityType="IAGModel.MedicalDetails" Width="1.5" PointX="12.875" PointY="4.375" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_MedicalDetails" />
-        <EntityTypeShape EntityType="IAGModel.CovidVaccineRecord" Width="1.5" PointX="3.375" PointY="7" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord" />
-        <EntityTypeShape EntityType="IAGModel.EmergencyContact" Width="1.5" PointX="12.25" PointY="0.875" />
-        <AssociationConnector Association="IAGModel.FK_PersonalInformation_EmergencyContact" />
-        <EntityTypeShape EntityType="IAGModel.HostSchool" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

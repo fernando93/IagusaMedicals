@@ -1,4 +1,6 @@
-﻿@model IagusaMedicals.Models.HostSchoolModels
+﻿@{ Layout = "~/Views/Shared/_LayoutHost.cshtml"; }
+
+@model IAGUSA.ENTITY.HostSchool
 @{
     var message = ViewBag.SuccessMsg;
 }
@@ -45,8 +47,8 @@
                                     First Name *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.FirstName, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                 </div>
 
                             </div>
@@ -60,8 +62,8 @@
                                     Last Name *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.LastName, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -78,8 +80,8 @@
                                     Email Address *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.Email, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -91,8 +93,8 @@
                                     Mobile Phone *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.Phone, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -113,8 +115,8 @@
                                     Host School Name *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolName, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolName, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -125,8 +127,8 @@
                                     Host School Address *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolAdress, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolAdress, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolAdress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolAdress, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -141,8 +143,8 @@
                                     Host School City *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolCity, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolCity, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolCity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolCity, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -153,8 +155,8 @@
                                     Host School State *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolState, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolState, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolState, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolState, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -169,8 +171,8 @@
                                     Host School Zip *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolZip, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolZip, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolZip, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolZip, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -181,8 +183,8 @@
                                     Host School Website *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolWebsite, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolWebsite, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolWebsite, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolWebsite, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -199,8 +201,8 @@
                                     student population, description of community, etc. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolDescription, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolDescription, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolDescription, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -219,8 +221,8 @@
                                     :
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolExchangeTeachers, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolExchangeTeachers, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolExchangeTeachers, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolExchangeTeachers, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -236,8 +238,8 @@
                                     Teachers * :
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HostSchoolNumbersPositions, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolNumbersPositions, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HostSchoolNumbersPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HostSchoolNumbersPositions, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -255,8 +257,8 @@
 
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.DescriptionTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.DescriptionTeachingPositions, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.DescriptionTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DescriptionTeachingPositions, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -273,8 +275,8 @@
 
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.RequirementsTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.RequirementsTeachingPositions, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.RequirementsTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.RequirementsTeachingPositions, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -290,8 +292,8 @@
 
                                 </span>
                                 <div>
-                                    @Html.TextBoxFor(model => model.datos.StartDate, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", type = "date" })
-                                    @Html.ValidationMessageFor(model => model.datos.StartDate, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.StartDate, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
 
                                 </div>
                             </div>
@@ -309,8 +311,8 @@
                                     vacation period, etc. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.WorksHours, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.WorksHours, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.WorksHours, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.WorksHours, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -325,8 +327,8 @@
                                     Annual Salary *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.AnnualSalary, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.AnnualSalary, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.AnnualSalary, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AnnualSalary, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -342,8 +344,8 @@
                                     provided by the school or district. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.ComensationBenefits, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.ComensationBenefits, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.ComensationBenefits, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ComensationBenefits, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -360,8 +362,8 @@
                                     as for housing, transportation, union fees, uniform, etc*:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.WageDeductions, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.WageDeductions, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.WageDeductions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.WageDeductions, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -380,8 +382,8 @@
                                     affordable. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HousingRecomendations, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HousingRecomendations, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HousingRecomendations, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HousingRecomendations, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -398,8 +400,8 @@
                                     local housing that is safe and affordable. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.HousingCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.HousingCostEstimate, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.HousingCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.HousingCostEstimate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -418,8 +420,8 @@
                                     costs. *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.TransportationRecommendations, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.TransportationRecommendations, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.TransportationRecommendations, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TransportationRecommendations, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -436,8 +438,8 @@
                                     for local transportation that is safe and affordable.*:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.TransportationCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.TransportationCostEstimate, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.TransportationCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TransportationCostEstimate, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -455,8 +457,8 @@
                                     care facilities or emergency rooms.*:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.AvailableHealthCare, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.AvailableHealthCare, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.AvailableHealthCare, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AvailableHealthCare, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -476,8 +478,8 @@
                                     points of interest, etc.) *:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.CulturalActivities, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.CulturalActivities, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.CulturalActivities, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CulturalActivities, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -494,8 +496,8 @@
                                     any free services offered (internet, museum passes, etc.).:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.Library, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.Library, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Library, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Library, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -514,8 +516,8 @@
                                     other activities.:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.Schools, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.Schools, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Schools, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Schools, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -532,15 +534,45 @@
                                     deposit or free checking accounts:
                                 </span>
                                 <div>
-                                    @Html.EditorFor(model => model.datos.Banks, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.datos.Banks, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.Banks, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Banks, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                     <br />
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Upload Medical Insurance Policy -- As part of the j-1 Teacher Exchange Program, medical insurance coverage must meet minimum State Department coverage requirements of 22 C.F.R. §62.14 *:
+                                </span>
+                                <div>
+                                    <div class="col-lg-">
+                                        <input type="file" name="file2" id="file2" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Upload Position Description (5 MB or less) *:
+                                </span>
+                                <div>
+                                    <div class="col-lg-">
+                                        <input type="file" name="file1" id="file1" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
                     <br />
                     <div class="form-group">
@@ -555,83 +587,4 @@
         </div>
     </div>
 }
-
-@section scripts {
-        <script type="text/javascript">
-
-
-            var KTFormRepeater = function () {
-
-                // Private functions
-                var demo1 = function () {
-                    $('#kt_repeater_1').repeater({
-                        initEmpty: false,
-
-                        defaultValues: {
-                            'text-input': 'foo'
-                        },
-
-                        show: function () {
-                            $(this).slideDown();
-                        },
-
-                        hide: function (deleteElement) {
-                            $(this).slideUp(deleteElement);
-                        }
-                    });
-                }
-
-                return {
-                    // public functions
-                    init: function () {
-                        demo1();
-                    }
-                };
-            }();
-
-            jQuery(document).ready(function () {
-                KTFormRepeater.init();
-
-            });
-        </script>
-        <script type="text/javascript">
-
-
-            var KTFormRepeaterr = function () {
-
-                // Private functions
-                var demo1 = function () {
-                    $('#kt_repeater_2').repeater({
-                        initEmpty: false,
-
-                        defaultValues: {
-                            'text-input': 'foo'
-                        },
-
-                        show: function () {
-                            $(this).slideDown();
-                        },
-
-                        hide: function (deleteElement) {
-                            $(this).slideUp(deleteElement);
-                        }
-                    });
-                }
-
-                return {
-                    // public functions
-                    init: function () {
-                        demo1();
-
-                    }
-                };
-            }();
-
-            jQuery(document).ready(function () {
-                KTFormRepeaterr.init();
-
-            });
-        </script>
-
-    }
 

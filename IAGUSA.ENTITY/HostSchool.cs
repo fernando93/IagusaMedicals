@@ -16,49 +16,83 @@ namespace IAGUSA.ENTITY
     public partial class HostSchool
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "This value is required")]
+
+        [DataType(DataType.Text)]
         public string FirstName { get; set; }
+
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "This value is required")]
         public string LastName { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "This value is required")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string Phone { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolName { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolAdress { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolCity { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolState { get; set; }
+
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolZip { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string HostSchoolWebsite { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string HostSchoolDescription { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string HostSchoolExchangeTeachers { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public int HostSchoolNumbersPositions { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string DescriptionTeachingPositions { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string RequirementsTeachingPositions { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public System.DateTime StartDate { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string WorksHours { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string AnnualSalary { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string ComensationBenefits { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string WageDeductions { get; set; }
         public string PositionDescription { get; set; }
         public string MedicalInsurance { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string HousingRecomendations { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string HousingCostEstimate { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string TransportationRecommendations { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string TransportationCostEstimate { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string AvailableHealthCare { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         [DataType(DataType.MultilineText)]
         public string CulturalActivities { get; set; }
         [DataType(DataType.MultilineText)]
         public string Library { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string Schools { get; set; }
         [DataType(DataType.MultilineText)]

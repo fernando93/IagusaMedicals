@@ -6420,6 +6420,7 @@
     <Content Include="Views\FormMedicalHistory\Finalizacion.cshtml" />
     <Content Include="Views\HostSchool\create.cshtml" />
     <Content Include="Views\HostSchool\Finalizacion.cshtml" />
+    <Content Include="Views\Shared\_LayoutHost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
