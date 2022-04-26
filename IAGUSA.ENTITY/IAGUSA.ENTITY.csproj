@@ -89,6 +89,9 @@
     <Compile Include="Gender.cs">
       <DependentUpon>ModelIAGUSA.tt</DependentUpon>
     </Compile>
+    <Compile Include="HostSchool.cs">
+      <DependentUpon>ModelIAGUSA.tt</DependentUpon>
+    </Compile>
     <Compile Include="MedicalDetails.cs">
       <DependentUpon>ModelIAGUSA.tt</DependentUpon>
     </Compile>

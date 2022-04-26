@@ -91,6 +91,7 @@
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmergencyContactUS">
           <Key>
@@ -103,6 +104,7 @@
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -110,6 +112,43 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="gender" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HostSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HostSchoolName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="HostSchoolAdress" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="HostSchoolCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostSchoolState" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostSchoolZip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostSchoolWebsite" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="HostSchoolDescription" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HostSchoolExchangeTeachers" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HostSchoolNumbersPositions" Type="int" Nullable="false" />
+          <Property Name="DescriptionTeachingPositions" Type="varchar" MaxLength="5000" Nullable="false" />
+          <Property Name="RequirementsTeachingPositions" Type="varchar" MaxLength="5000" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="WorksHours" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AnnualSalary" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ComensationBenefits" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="WageDeductions" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PositionDescription" Type="varchar" MaxLength="500" />
+          <Property Name="MedicalInsurance" Type="varchar" MaxLength="500" />
+          <Property Name="HousingRecomendations" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="HousingCostEstimate" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TransportationRecommendations" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TransportationCostEstimate" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="AvailableHealthCare" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CulturalActivities" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Library" Type="varchar" MaxLength="500" />
+          <Property Name="Schools" Type="varchar" MaxLength="500" />
+          <Property Name="Banks" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="MedicalDetails">
           <Key>
@@ -273,6 +312,7 @@
           <EntitySet Name="EmergencyContact" EntityType="Self.EmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmergencyContactUS" EntityType="Self.EmergencyContactUS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HostSchool" EntityType="Self.HostSchool" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicalDetails" EntityType="Self.MedicalDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalInformation" EntityType="Self.PersonalInformation" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -451,6 +491,7 @@
             <End Role="CovidVaccineRecord" EntitySet="CovidVaccineRecord" />
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
           </AssociationSet>
+          <EntitySet Name="HostSchool" EntityType="IAGModel.HostSchool" />
         </EntityContainer>
         <EntityType Name="EmergencyContact">
           <Key>
@@ -464,6 +505,7 @@
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="relationship" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="EmergencyContact" ToRole="PersonalInformation" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EmergencyContactUS">
           <Key>
@@ -477,6 +519,7 @@
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="relationship" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="EmergencyContactUS" ToRole="PersonalInformation" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -602,6 +645,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="HostSchool">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolAdress" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolState" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolZip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolWebsite" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolExchangeTeachers" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolNumbersPositions" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementsTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WorksHours" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualSalary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComensationBenefits" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WageDeductions" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PositionDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MedicalInsurance" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HousingRecomendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HousingCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationRecommendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableHealthCare" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CulturalActivities" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Library" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Banks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -674,6 +754,7 @@
           <EntitySetMapping Name="EmergencyContact">
             <EntityTypeMapping TypeName="IAGModel.EmergencyContact">
               <MappingFragment StoreEntitySet="EmergencyContact">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="relationship" ColumnName="relationship" />
                 <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
                 <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
@@ -687,6 +768,7 @@
           <EntitySetMapping Name="EmergencyContactUS">
             <EntityTypeMapping TypeName="IAGModel.EmergencyContactUS">
               <MappingFragment StoreEntitySet="EmergencyContactUS">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="relationship" ColumnName="relationship" />
                 <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
                 <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
@@ -754,6 +836,44 @@
                 <ScalarProperty Name="firstDoseDate" ColumnName="firstDoseDate" />
                 <ScalarProperty Name="firstDoseCovidVaccine" ColumnName="firstDoseCovidVaccine" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HostSchool">
+            <EntityTypeMapping TypeName="IAGModel.HostSchool">
+              <MappingFragment StoreEntitySet="HostSchool">
+                <ScalarProperty Name="Banks" ColumnName="Banks" />
+                <ScalarProperty Name="Schools" ColumnName="Schools" />
+                <ScalarProperty Name="Library" ColumnName="Library" />
+                <ScalarProperty Name="CulturalActivities" ColumnName="CulturalActivities" />
+                <ScalarProperty Name="AvailableHealthCare" ColumnName="AvailableHealthCare" />
+                <ScalarProperty Name="TransportationCostEstimate" ColumnName="TransportationCostEstimate" />
+                <ScalarProperty Name="TransportationRecommendations" ColumnName="TransportationRecommendations" />
+                <ScalarProperty Name="HousingCostEstimate" ColumnName="HousingCostEstimate" />
+                <ScalarProperty Name="HousingRecomendations" ColumnName="HousingRecomendations" />
+                <ScalarProperty Name="MedicalInsurance" ColumnName="MedicalInsurance" />
+                <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+                <ScalarProperty Name="WageDeductions" ColumnName="WageDeductions" />
+                <ScalarProperty Name="ComensationBenefits" ColumnName="ComensationBenefits" />
+                <ScalarProperty Name="AnnualSalary" ColumnName="AnnualSalary" />
+                <ScalarProperty Name="WorksHours" ColumnName="WorksHours" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RequirementsTeachingPositions" ColumnName="RequirementsTeachingPositions" />
+                <ScalarProperty Name="DescriptionTeachingPositions" ColumnName="DescriptionTeachingPositions" />
+                <ScalarProperty Name="HostSchoolNumbersPositions" ColumnName="HostSchoolNumbersPositions" />
+                <ScalarProperty Name="HostSchoolExchangeTeachers" ColumnName="HostSchoolExchangeTeachers" />
+                <ScalarProperty Name="HostSchoolDescription" ColumnName="HostSchoolDescription" />
+                <ScalarProperty Name="HostSchoolWebsite" ColumnName="HostSchoolWebsite" />
+                <ScalarProperty Name="HostSchoolZip" ColumnName="HostSchoolZip" />
+                <ScalarProperty Name="HostSchoolState" ColumnName="HostSchoolState" />
+                <ScalarProperty Name="HostSchoolCity" ColumnName="HostSchoolCity" />
+                <ScalarProperty Name="HostSchoolAdress" ColumnName="HostSchoolAdress" />
+                <ScalarProperty Name="HostSchoolName" ColumnName="HostSchoolName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

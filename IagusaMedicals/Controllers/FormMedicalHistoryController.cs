@@ -76,7 +76,7 @@ namespace IagusaMedicals.Controllers
                     medical.personal.covidVaccineFK = covid.id;
                 }
 
-                    medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
+                medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
                 medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
                 medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
                 db.EmergencyContact.Add(medical.emergencyContact);

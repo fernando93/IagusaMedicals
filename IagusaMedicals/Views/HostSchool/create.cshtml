@@ -1,0 +1,637 @@
+﻿@model IagusaMedicals.Models.HostSchoolModels
+@{
+    var message = ViewBag.SuccessMsg;
+}
+
+@{
+    ViewBag.Title = "Host School Application";
+}
+
+
+<!-- end:: Subheader -->
+@using (Ajax.BeginForm("Create", "HostSchool", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "successAction"
+
+},
+                new { @id = "modalForm", enctype = "multipart/form-data" }
+                ))
+{
+
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid " id="kt_content">
+
+        <div class="kt-portlet kt-portlet--mobile ">
+
+            <div class="kt-portlet__body align-items-center ">
+
+
+                <div class="form-horizontal col-md-6 ">
+                    <br /><br />
+
+                    <h4>Personal Information</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <br />
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span style="padding-left:5px; font-size:12px;">
+                                    First Name *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.FirstName, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Last Name *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.LastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Email Address *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Mobile Phone *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <h4>Host School Information</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School Name *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School Address *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolAdress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolAdress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School City *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolCity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolCity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School State *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolState, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolState, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School Zip *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolZip, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolZip, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School Website *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolWebsite, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolWebsite, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Host School Description -- Please include a brief description of your
+                                    school or district, including information such as demographics of
+                                    student population, description of community, etc. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolDescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Do you host other exchange teachers? If so, please include the
+                                    number of exchange teachers you typically host in one year, and
+                                    the name of company/ organization who is the J-1 sponsor of the
+                                    exchange teachers. *
+                                    :
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolExchangeTeachers, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolExchangeTeachers, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Number of Teaching Positions Available for ITA Exchange
+                                    Teachers * :
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HostSchoolNumbersPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HostSchoolNumbersPositions, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Description of Teaching Positions to Fill with ITA Teachers -- Please
+                                    include a description of the available teaching positions, including
+                                    grade level or subject area. *:
+
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.DescriptionTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.DescriptionTeachingPositions, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Teaching position requirements, professional obligations,
+                                    responsibilities and duties *:
+
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.RequirementsTeachingPositions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.RequirementsTeachingPositions, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Requested start date (mm/dd/yyyy) *:
+
+                                </span>
+                                <div>
+                                    @Html.TextBoxFor(model => model.datos.StartDate, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.datos.StartDate, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Expected work hours -- Please include information including
+                                    expected number of hours per week, expected schedule, extended
+                                    vacation period, etc. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.WorksHours, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.WorksHours, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Annual Salary *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.AnnualSalary, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.AnnualSalary, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Compensation Benefits -- Please include benefit information
+                                    provided by the school or district. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.ComensationBenefits, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.ComensationBenefits, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Wage Deductions -- Please note any deductions taken from the
+                                    exchange teacher's paycheck, beyond state and federal taxes, such
+                                    as for housing, transportation, union fees, uniform, etc*:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.WageDeductions, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.WageDeductions, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Housing Recommendations -- Please include any
+                                    recommendations you have for where exchange teachers could
+                                    secure short-term or long-term housing that is safe and
+                                    affordable. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HousingRecomendations, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HousingRecomendations, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Housing Cost Estimate -- Please list an estimated cost range for
+                                    local housing that is safe and affordable. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.HousingCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.HousingCostEstimate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Transportation Recommendations -- Please include any
+                                    recommendations you have for how exchange teachers could
+                                    commute to school and throughout the community, and estimated
+                                    costs. *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.TransportationRecommendations, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.TransportationRecommendations, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Transportation Cost Estimate -- Please list an estimated cost range
+                                    for local transportation that is safe and affordable.*:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.TransportationCostEstimate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.TransportationCostEstimate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Available Healthcare -- Please describe local healthcare that is
+                                    available, including any recommendations for local doctors, urgent
+                                    care facilities or emergency rooms.*:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.AvailableHealthCare, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.AvailableHealthCare, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Cultural Activities -- Please describe locally available activities that
+                                    you recommend exchange teachers visit or participate in while in
+                                    your community. (Examples may include local museums, local
+                                    sports teams, holiday or seasonal events, local parks or natural
+                                    points of interest, etc.) *:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.CulturalActivities, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.CulturalActivities, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Library -- Please describe locally available public libraries, including
+                                    any free services offered (internet, museum passes, etc.).:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.Library, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.Library, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Schools/ Community Centers/ Recreation Centers -- Please describe
+                                    any locally available schools or centers where exchange teachers
+                                    could take classes or participate in organized sports, art classes, or
+                                    other activities.:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.Schools, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.Schools, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+
+                                </div>
+                                <span style="padding-left:5px; font-size:12px;">
+                                    Banks -- Please describe any recommended local banks with direct
+                                    deposit or free checking accounts:
+                                </span>
+                                <div>
+                                    @Html.EditorFor(model => model.datos.Banks, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.datos.Banks, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Send!" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+        <script type="text/javascript">
+
+
+            var KTFormRepeater = function () {
+
+                // Private functions
+                var demo1 = function () {
+                    $('#kt_repeater_1').repeater({
+                        initEmpty: false,
+
+                        defaultValues: {
+                            'text-input': 'foo'
+                        },
+
+                        show: function () {
+                            $(this).slideDown();
+                        },
+
+                        hide: function (deleteElement) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    });
+                }
+
+                return {
+                    // public functions
+                    init: function () {
+                        demo1();
+                    }
+                };
+            }();
+
+            jQuery(document).ready(function () {
+                KTFormRepeater.init();
+
+            });
+        </script>
+        <script type="text/javascript">
+
+
+            var KTFormRepeaterr = function () {
+
+                // Private functions
+                var demo1 = function () {
+                    $('#kt_repeater_2').repeater({
+                        initEmpty: false,
+
+                        defaultValues: {
+                            'text-input': 'foo'
+                        },
+
+                        show: function () {
+                            $(this).slideDown();
+                        },
+
+                        hide: function (deleteElement) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    });
+                }
+
+                return {
+                    // public functions
+                    init: function () {
+                        demo1();
+
+                    }
+                };
+            }();
+
+            jQuery(document).ready(function () {
+                KTFormRepeaterr.init();
+
+            });
+        </script>
+
+    }
+

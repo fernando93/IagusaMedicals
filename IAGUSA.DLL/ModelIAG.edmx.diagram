@@ -24,6 +24,7 @@
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_MedicalDetails" />
         <EntityTypeShape EntityType="IAGModel.CovidVaccineRecord" Width="1.5" PointX="3.375" PointY="7" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord" />
+        <EntityTypeShape EntityType="IAGModel.HostSchool" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
