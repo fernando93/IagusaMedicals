@@ -11,7 +11,8 @@ namespace IAGUSA.ENTITY
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EmergencyContact
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +20,20 @@ namespace IAGUSA.ENTITY
         {
             this.PersonalInformation = new HashSet<PersonalInformation>();
         }
-    
+
         public int id { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string firstName { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string lastName { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string addressCountry { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string mobilePhone { get; set; }
         public string whatsapp { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string relationship { get; set; }
+        [Required(ErrorMessage = "This value is required")]
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

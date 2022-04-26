@@ -19,7 +19,7 @@ namespace IAGUSA.ENTITY
         {
             this.PersonalInformation = new HashSet<PersonalInformation>();
         }
-    
+
         public int id { get; set; }
         public string bloodGroup { get; set; }
         public Nullable<bool> bloodtransfusion { get; set; }
@@ -28,7 +28,8 @@ namespace IAGUSA.ENTITY
         public string allergiesList { get; set; }
         public string medicalConditionsList { get; set; }
         public string regularMedications { get; set; }
-    
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalInformation> PersonalInformation { get; set; }
     }

@@ -465,14 +465,9 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="EmergencyContact" EntityType="IAGModel.EmergencyContact" />
           <EntitySet Name="EmergencyContactUS" EntityType="IAGModel.EmergencyContactUS" />
           <EntitySet Name="Gender" EntityType="IAGModel.Gender" />
           <EntitySet Name="PersonalInformation" EntityType="IAGModel.PersonalInformation" />
-          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="IAGModel.FK_PersonalInformation_EmergencyContact">
-            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
           <AssociationSet Name="FK_PersonalInformation_EmergencyContactUS" Association="IAGModel.FK_PersonalInformation_EmergencyContactUS">
             <End Role="EmergencyContactUS" EntitySet="EmergencyContactUS" />
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
@@ -489,6 +484,11 @@
           <EntitySet Name="CovidVaccineRecord" EntityType="IAGModel.CovidVaccineRecord" />
           <AssociationSet Name="FK_PersonalInformation_CovidVaccineRecord" Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord">
             <End Role="CovidVaccineRecord" EntitySet="CovidVaccineRecord" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <EntitySet Name="EmergencyContact" EntityType="IAGModel.EmergencyContact" />
+          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="IAGModel.FK_PersonalInformation_EmergencyContact">
+            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
           </AssociationSet>
           <EntitySet Name="HostSchool" EntityType="IAGModel.HostSchool" />
@@ -548,26 +548,14 @@
           <Property Name="emergencyContactCountryFk" Type="Int32" Nullable="false" />
           <Property Name="emergencyContactUSFk" Type="Int32" Nullable="false" />
           <Property Name="medicalDetailsFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="EmergencyContact" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
           <NavigationProperty Name="EmergencyContactUS" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="PersonalInformation" ToRole="EmergencyContactUS" />
           <NavigationProperty Name="Gender" Relationship="IAGModel.FK_PersonalInformation_Gender" FromRole="PersonalInformation" ToRole="Gender" />
           <NavigationProperty Name="MedicalDetails" Relationship="IAGModel.FK_PersonalInformation_MedicalDetails" FromRole="PersonalInformation" ToRole="MedicalDetails" />
           <Property Name="covidVaccineFK" Type="Int32" />
           <Property Name="recordDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CovidVaccineRecord" Relationship="IAGModel.FK_PersonalInformation_CovidVaccineRecord" FromRole="PersonalInformation" ToRole="CovidVaccineRecord" />
+          <NavigationProperty Name="EmergencyContact" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
         </EntityType>
-        <Association Name="FK_PersonalInformation_EmergencyContact">
-          <End Type="IAGModel.EmergencyContact" Role="EmergencyContact" Multiplicity="1" />
-          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmergencyContact">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PersonalInformation">
-              <PropertyRef Name="emergencyContactCountryFk" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PersonalInformation_EmergencyContactUS">
           <End Type="IAGModel.EmergencyContactUS" Role="EmergencyContactUS" Multiplicity="1" />
           <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
@@ -645,43 +633,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="HostSchool">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolAdress" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolState" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolZip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolWebsite" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolExchangeTeachers" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="HostSchoolNumbersPositions" Type="Int32" Nullable="false" />
-          <Property Name="DescriptionTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
-          <Property Name="RequirementsTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="WorksHours" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AnnualSalary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ComensationBenefits" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="WageDeductions" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="PositionDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="MedicalInsurance" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="HousingRecomendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="HousingCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="TransportationRecommendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="TransportationCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="AvailableHealthCare" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="CulturalActivities" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Library" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Banks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -874,6 +825,20 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmergencyContact">
+            <EntityTypeMapping TypeName="IAGModel.EmergencyContact">
+              <MappingFragment StoreEntitySet="EmergencyContact">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
+                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
