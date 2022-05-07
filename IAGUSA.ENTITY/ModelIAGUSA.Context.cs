@@ -13,9 +13,9 @@ namespace IAGUSA.ENTITY
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class IAGEntities : DbContext
+    public partial class IAGEntities1 : DbContext
     {
-        public IAGEntities()
+        public IAGEntities1()
             : base("name=IAGEntities1")
         {
         }

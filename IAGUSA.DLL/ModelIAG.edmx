@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IAGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IAGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -87,7 +87,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="addressCountry" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="addressCountry" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" Nullable="false" />
@@ -100,7 +100,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="relationship" Type="varchar" MaxLength="40" />
@@ -170,15 +170,15 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="firstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="lastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="addressCountry" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="addressUS" Type="varchar" MaxLength="150" />
+          <Property Name="addressCountry" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="addressUS" Type="varchar" MaxLength="250" />
           <Property Name="mobilePhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="whatsapp" Type="varchar" MaxLength="30" />
           <Property Name="genderFk" Type="int" Nullable="false" />
           <Property Name="dateBirth" Type="date" Nullable="false" />
           <Property Name="countryNationality" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="visaNumberType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="visaNumberType" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="emergencyContactCountryFk" Type="int" Nullable="false" />
           <Property Name="emergencyContactUSFk" Type="int" Nullable="false" />
           <Property Name="medicalDetailsFK" Type="int" Nullable="false" />
@@ -352,38 +352,83 @@
             <End Role="PersonalInformation" EntitySet="PersonalInformation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IAGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IAGEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="IAGModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="IAGModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="IAGModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="IAGModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="IAGModel.AspNetUsers" />
+          <EntitySet Name="CovidVaccineRecord" EntityType="IAGModel.CovidVaccineRecord" />
+          <EntitySet Name="EmergencyContact" EntityType="IAGModel.EmergencyContact" />
+          <EntitySet Name="EmergencyContactUS" EntityType="IAGModel.EmergencyContactUS" />
+          <EntitySet Name="Gender" EntityType="IAGModel.Gender" />
+          <EntitySet Name="HostSchool" EntityType="IAGModel.HostSchool" />
+          <EntitySet Name="MedicalDetails" EntityType="IAGModel.MedicalDetails" />
+          <EntitySet Name="PersonalInformation" EntityType="IAGModel.PersonalInformation" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="IAGModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="IAGModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_CovidVaccineRecord" Association="IAGModel.FK_PersonalInformation_CovidVaccineRecord">
+            <End Role="CovidVaccineRecord" EntitySet="CovidVaccineRecord" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="IAGModel.FK_PersonalInformation_EmergencyContact">
+            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_EmergencyContactUS" Association="IAGModel.FK_PersonalInformation_EmergencyContactUS">
+            <End Role="EmergencyContactUS" EntitySet="EmergencyContactUS" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_Gender" Association="IAGModel.FK_PersonalInformation_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalInformation_MedicalDetails" Association="IAGModel.FK_PersonalInformation_MedicalDetails">
+            <End Role="MedicalDetails" EntitySet="MedicalDetails" />
+            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="IAGModel.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="IAGModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUsers" Relationship="IAGModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserLogins">
           <Key>
@@ -391,16 +436,16 @@
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="IAGModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -411,10 +456,10 @@
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="IAGModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="IAGModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="IAGModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="CovidVaccineRecord">
           <Key>
@@ -429,77 +474,77 @@
           <Property Name="otherFirstDoseDate" Type="DateTime" Precision="0" />
           <Property Name="otherSecondDoseCovidVaccine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="otherSecondDoseDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PersonalInformation" Relationship="Self.FK_PersonalInformation_CovidVaccineRecord" FromRole="CovidVaccineRecord" ToRole="PersonalInformation" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_CovidVaccineRecord" FromRole="CovidVaccineRecord" ToRole="PersonalInformation" />
         </EntityType>
         <EntityType Name="EmergencyContact">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="addressCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mobilePhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addressCountry" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="mobilePhone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="relationship" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="relationship" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonalInformation" Relationship="Self.FK_PersonalInformation_EmergencyContact" FromRole="EmergencyContact" ToRole="PersonalInformation" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="EmergencyContact" ToRole="PersonalInformation" />
         </EntityType>
         <EntityType Name="EmergencyContactUS">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mobilePhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="mobilePhone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="relationship" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonalInformation" Relationship="Self.FK_PersonalInformation_EmergencyContactUS" FromRole="EmergencyContactUS" ToRole="PersonalInformation" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="EmergencyContactUS" ToRole="PersonalInformation" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gender1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="PersonalInformation" Relationship="Self.FK_PersonalInformation_Gender" FromRole="Gender" ToRole="PersonalInformation" />
+          <Property Name="gender1" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_Gender" FromRole="Gender" ToRole="PersonalInformation" />
         </EntityType>
         <EntityType Name="HostSchool">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolAdress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolZip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolWebsite" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HostSchoolExchangeTeachers" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolAdress" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolCity" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolState" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolZip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolWebsite" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HostSchoolExchangeTeachers" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="HostSchoolNumbersPositions" Type="Int32" Nullable="false" />
-          <Property Name="DescriptionTeachingPositions" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="RequirementsTeachingPositions" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescriptionTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="RequirementsTeachingPositions" Type="String" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="WorksHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AnnualSalary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ComensationBenefits" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="WageDeductions" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WorksHours" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnnualSalary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComensationBenefits" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="WageDeductions" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PositionDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MedicalInsurance" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="HousingRecomendations" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HousingCostEstimate" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TransportationRecommendations" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TransportationCostEstimate" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AvailableHealthCare" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CulturalActivities" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HousingRecomendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HousingCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationRecommendations" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TransportationCostEstimate" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AvailableHealthCare" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CulturalActivities" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Library" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Schools" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Banks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -509,47 +554,47 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bloodGroup" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="bloodtransfusion" Type="Boolean" />
           <Property Name="medicalClearance" Type="Boolean" Nullable="false" />
           <Property Name="allergies" Type="Boolean" Nullable="false" />
           <Property Name="allergiesList" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="medicalConditionsList" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="regularMedications" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PersonalInformation" Relationship="Self.FK_PersonalInformation_MedicalDetails" FromRole="MedicalDetails" ToRole="PersonalInformation" />
+          <NavigationProperty Name="PersonalInformation" Relationship="IAGModel.FK_PersonalInformation_MedicalDetails" FromRole="MedicalDetails" ToRole="PersonalInformation" />
         </EntityType>
         <EntityType Name="PersonalInformation">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="addressCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="addressUS" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="mobilePhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addressCountry" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="addressUS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="mobilePhone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="whatsapp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="genderFk" Type="Int32" Nullable="false" />
           <Property Name="dateBirth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="countryNationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="visaNumberType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="countryNationality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="visaNumberType" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="emergencyContactCountryFk" Type="Int32" Nullable="false" />
           <Property Name="emergencyContactUSFk" Type="Int32" Nullable="false" />
           <Property Name="medicalDetailsFK" Type="Int32" Nullable="false" />
           <Property Name="covidVaccineFK" Type="Int32" />
           <Property Name="recordDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CovidVaccineRecord" Relationship="Self.FK_PersonalInformation_CovidVaccineRecord" FromRole="PersonalInformation" ToRole="CovidVaccineRecord" />
-          <NavigationProperty Name="EmergencyContact" Relationship="Self.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
-          <NavigationProperty Name="EmergencyContactUS" Relationship="Self.FK_PersonalInformation_EmergencyContactUS" FromRole="PersonalInformation" ToRole="EmergencyContactUS" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_PersonalInformation_Gender" FromRole="PersonalInformation" ToRole="Gender" />
-          <NavigationProperty Name="MedicalDetails" Relationship="Self.FK_PersonalInformation_MedicalDetails" FromRole="PersonalInformation" ToRole="MedicalDetails" />
+          <NavigationProperty Name="CovidVaccineRecord" Relationship="IAGModel.FK_PersonalInformation_CovidVaccineRecord" FromRole="PersonalInformation" ToRole="CovidVaccineRecord" />
+          <NavigationProperty Name="EmergencyContact" Relationship="IAGModel.FK_PersonalInformation_EmergencyContact" FromRole="PersonalInformation" ToRole="EmergencyContact" />
+          <NavigationProperty Name="EmergencyContactUS" Relationship="IAGModel.FK_PersonalInformation_EmergencyContactUS" FromRole="PersonalInformation" ToRole="EmergencyContactUS" />
+          <NavigationProperty Name="Gender" Relationship="IAGModel.FK_PersonalInformation_Gender" FromRole="PersonalInformation" ToRole="Gender" />
+          <NavigationProperty Name="MedicalDetails" Relationship="IAGModel.FK_PersonalInformation_MedicalDetails" FromRole="PersonalInformation" ToRole="MedicalDetails" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Type="IAGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <End Type="IAGModel.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -560,10 +605,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Type="IAGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <End Type="IAGModel.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -574,8 +619,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonalInformation_CovidVaccineRecord">
-          <End Role="CovidVaccineRecord" Type="Self.CovidVaccineRecord" Multiplicity="0..1" />
-          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <End Type="IAGModel.CovidVaccineRecord" Role="CovidVaccineRecord" Multiplicity="0..1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CovidVaccineRecord">
               <PropertyRef Name="id" />
@@ -586,8 +631,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonalInformation_EmergencyContact">
-          <End Role="EmergencyContact" Type="Self.EmergencyContact" Multiplicity="1" />
-          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <End Type="IAGModel.EmergencyContact" Role="EmergencyContact" Multiplicity="1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmergencyContact">
               <PropertyRef Name="id" />
@@ -598,8 +643,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonalInformation_EmergencyContactUS">
-          <End Role="EmergencyContactUS" Type="Self.EmergencyContactUS" Multiplicity="1" />
-          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <End Type="IAGModel.EmergencyContactUS" Role="EmergencyContactUS" Multiplicity="1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmergencyContactUS">
               <PropertyRef Name="id" />
@@ -610,8 +655,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonalInformation_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <End Type="IAGModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="id" />
@@ -622,8 +667,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonalInformation_MedicalDetails">
-          <End Role="MedicalDetails" Type="Self.MedicalDetails" Multiplicity="1" />
-          <End Role="PersonalInformation" Type="Self.PersonalInformation" Multiplicity="*" />
+          <End Type="IAGModel.MedicalDetails" Role="MedicalDetails" Multiplicity="1" />
+          <End Type="IAGModel.PersonalInformation" Role="PersonalInformation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MedicalDetails">
               <PropertyRef Name="id" />
@@ -634,55 +679,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <End Type="IAGModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="IAGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="IAGEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="CovidVaccineRecord" EntityType="Self.CovidVaccineRecord" />
-          <EntitySet Name="EmergencyContact" EntityType="Self.EmergencyContact" />
-          <EntitySet Name="EmergencyContactUS" EntityType="Self.EmergencyContactUS" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="HostSchool" EntityType="Self.HostSchool" />
-          <EntitySet Name="MedicalDetails" EntityType="Self.MedicalDetails" />
-          <EntitySet Name="PersonalInformation" EntityType="Self.PersonalInformation" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInformation_CovidVaccineRecord" Association="Self.FK_PersonalInformation_CovidVaccineRecord">
-            <End Role="CovidVaccineRecord" EntitySet="CovidVaccineRecord" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInformation_EmergencyContact" Association="Self.FK_PersonalInformation_EmergencyContact">
-            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInformation_EmergencyContactUS" Association="Self.FK_PersonalInformation_EmergencyContactUS">
-            <End Role="EmergencyContactUS" EntitySet="EmergencyContactUS" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInformation_Gender" Association="Self.FK_PersonalInformation_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonalInformation_MedicalDetails" Association="Self.FK_PersonalInformation_MedicalDetails">
-            <End Role="MedicalDetails" EntitySet="MedicalDetails" />
-            <End Role="PersonalInformation" EntitySet="PersonalInformation" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -692,190 +691,190 @@
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="IAGModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="IAGModel.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
             <EntityTypeMapping TypeName="IAGModel.AspNetUserClaims">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="IAGModel.AspNetUserLogins">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="IAGModel.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CovidVaccineRecord">
             <EntityTypeMapping TypeName="IAGModel.CovidVaccineRecord">
               <MappingFragment StoreEntitySet="CovidVaccineRecord">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstDoseCovidVaccine" ColumnName="firstDoseCovidVaccine" />
-                <ScalarProperty Name="firstDoseDate" ColumnName="firstDoseDate" />
-                <ScalarProperty Name="SecondDoseCovidVaccine" ColumnName="SecondDoseCovidVaccine" />
-                <ScalarProperty Name="secondDoseDate" ColumnName="secondDoseDate" />
-                <ScalarProperty Name="otherFirstDoseCovidVaccine" ColumnName="otherFirstDoseCovidVaccine" />
-                <ScalarProperty Name="otherFirstDoseDate" ColumnName="otherFirstDoseDate" />
-                <ScalarProperty Name="otherSecondDoseCovidVaccine" ColumnName="otherSecondDoseCovidVaccine" />
                 <ScalarProperty Name="otherSecondDoseDate" ColumnName="otherSecondDoseDate" />
+                <ScalarProperty Name="otherSecondDoseCovidVaccine" ColumnName="otherSecondDoseCovidVaccine" />
+                <ScalarProperty Name="otherFirstDoseDate" ColumnName="otherFirstDoseDate" />
+                <ScalarProperty Name="otherFirstDoseCovidVaccine" ColumnName="otherFirstDoseCovidVaccine" />
+                <ScalarProperty Name="secondDoseDate" ColumnName="secondDoseDate" />
+                <ScalarProperty Name="SecondDoseCovidVaccine" ColumnName="SecondDoseCovidVaccine" />
+                <ScalarProperty Name="firstDoseDate" ColumnName="firstDoseDate" />
+                <ScalarProperty Name="firstDoseCovidVaccine" ColumnName="firstDoseCovidVaccine" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmergencyContact">
             <EntityTypeMapping TypeName="IAGModel.EmergencyContact">
               <MappingFragment StoreEntitySet="EmergencyContact">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
-                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
-                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
-                <ScalarProperty Name="relationship" ColumnName="relationship" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
+                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EmergencyContactUS">
             <EntityTypeMapping TypeName="IAGModel.EmergencyContactUS">
               <MappingFragment StoreEntitySet="EmergencyContactUS">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
-                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
-                <ScalarProperty Name="relationship" ColumnName="relationship" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="IAGModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gender1" ColumnName="gender" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HostSchool">
             <EntityTypeMapping TypeName="IAGModel.HostSchool">
               <MappingFragment StoreEntitySet="HostSchool">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="HostSchoolName" ColumnName="HostSchoolName" />
-                <ScalarProperty Name="HostSchoolAdress" ColumnName="HostSchoolAdress" />
-                <ScalarProperty Name="HostSchoolCity" ColumnName="HostSchoolCity" />
-                <ScalarProperty Name="HostSchoolState" ColumnName="HostSchoolState" />
-                <ScalarProperty Name="HostSchoolZip" ColumnName="HostSchoolZip" />
-                <ScalarProperty Name="HostSchoolWebsite" ColumnName="HostSchoolWebsite" />
-                <ScalarProperty Name="HostSchoolDescription" ColumnName="HostSchoolDescription" />
-                <ScalarProperty Name="HostSchoolExchangeTeachers" ColumnName="HostSchoolExchangeTeachers" />
-                <ScalarProperty Name="HostSchoolNumbersPositions" ColumnName="HostSchoolNumbersPositions" />
-                <ScalarProperty Name="DescriptionTeachingPositions" ColumnName="DescriptionTeachingPositions" />
-                <ScalarProperty Name="RequirementsTeachingPositions" ColumnName="RequirementsTeachingPositions" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="WorksHours" ColumnName="WorksHours" />
-                <ScalarProperty Name="AnnualSalary" ColumnName="AnnualSalary" />
-                <ScalarProperty Name="ComensationBenefits" ColumnName="ComensationBenefits" />
-                <ScalarProperty Name="WageDeductions" ColumnName="WageDeductions" />
-                <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
-                <ScalarProperty Name="MedicalInsurance" ColumnName="MedicalInsurance" />
-                <ScalarProperty Name="HousingRecomendations" ColumnName="HousingRecomendations" />
-                <ScalarProperty Name="HousingCostEstimate" ColumnName="HousingCostEstimate" />
-                <ScalarProperty Name="TransportationRecommendations" ColumnName="TransportationRecommendations" />
-                <ScalarProperty Name="TransportationCostEstimate" ColumnName="TransportationCostEstimate" />
-                <ScalarProperty Name="AvailableHealthCare" ColumnName="AvailableHealthCare" />
-                <ScalarProperty Name="CulturalActivities" ColumnName="CulturalActivities" />
-                <ScalarProperty Name="Library" ColumnName="Library" />
-                <ScalarProperty Name="Schools" ColumnName="Schools" />
                 <ScalarProperty Name="Banks" ColumnName="Banks" />
+                <ScalarProperty Name="Schools" ColumnName="Schools" />
+                <ScalarProperty Name="Library" ColumnName="Library" />
+                <ScalarProperty Name="CulturalActivities" ColumnName="CulturalActivities" />
+                <ScalarProperty Name="AvailableHealthCare" ColumnName="AvailableHealthCare" />
+                <ScalarProperty Name="TransportationCostEstimate" ColumnName="TransportationCostEstimate" />
+                <ScalarProperty Name="TransportationRecommendations" ColumnName="TransportationRecommendations" />
+                <ScalarProperty Name="HousingCostEstimate" ColumnName="HousingCostEstimate" />
+                <ScalarProperty Name="HousingRecomendations" ColumnName="HousingRecomendations" />
+                <ScalarProperty Name="MedicalInsurance" ColumnName="MedicalInsurance" />
+                <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+                <ScalarProperty Name="WageDeductions" ColumnName="WageDeductions" />
+                <ScalarProperty Name="ComensationBenefits" ColumnName="ComensationBenefits" />
+                <ScalarProperty Name="AnnualSalary" ColumnName="AnnualSalary" />
+                <ScalarProperty Name="WorksHours" ColumnName="WorksHours" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="RequirementsTeachingPositions" ColumnName="RequirementsTeachingPositions" />
+                <ScalarProperty Name="DescriptionTeachingPositions" ColumnName="DescriptionTeachingPositions" />
+                <ScalarProperty Name="HostSchoolNumbersPositions" ColumnName="HostSchoolNumbersPositions" />
+                <ScalarProperty Name="HostSchoolExchangeTeachers" ColumnName="HostSchoolExchangeTeachers" />
+                <ScalarProperty Name="HostSchoolDescription" ColumnName="HostSchoolDescription" />
+                <ScalarProperty Name="HostSchoolWebsite" ColumnName="HostSchoolWebsite" />
+                <ScalarProperty Name="HostSchoolZip" ColumnName="HostSchoolZip" />
+                <ScalarProperty Name="HostSchoolState" ColumnName="HostSchoolState" />
+                <ScalarProperty Name="HostSchoolCity" ColumnName="HostSchoolCity" />
+                <ScalarProperty Name="HostSchoolAdress" ColumnName="HostSchoolAdress" />
+                <ScalarProperty Name="HostSchoolName" ColumnName="HostSchoolName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MedicalDetails">
             <EntityTypeMapping TypeName="IAGModel.MedicalDetails">
               <MappingFragment StoreEntitySet="MedicalDetails">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
-                <ScalarProperty Name="bloodtransfusion" ColumnName="bloodtransfusion" />
-                <ScalarProperty Name="medicalClearance" ColumnName="medicalClearance" />
-                <ScalarProperty Name="allergies" ColumnName="allergies" />
-                <ScalarProperty Name="allergiesList" ColumnName="allergiesList" />
-                <ScalarProperty Name="medicalConditionsList" ColumnName="medicalConditionsList" />
                 <ScalarProperty Name="regularMedications" ColumnName="regularMedications" />
+                <ScalarProperty Name="medicalConditionsList" ColumnName="medicalConditionsList" />
+                <ScalarProperty Name="allergiesList" ColumnName="allergiesList" />
+                <ScalarProperty Name="allergies" ColumnName="allergies" />
+                <ScalarProperty Name="medicalClearance" ColumnName="medicalClearance" />
+                <ScalarProperty Name="bloodtransfusion" ColumnName="bloodtransfusion" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PersonalInformation">
             <EntityTypeMapping TypeName="IAGModel.PersonalInformation">
               <MappingFragment StoreEntitySet="PersonalInformation">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
-                <ScalarProperty Name="addressUS" ColumnName="addressUS" />
-                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
-                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
-                <ScalarProperty Name="genderFk" ColumnName="genderFk" />
-                <ScalarProperty Name="dateBirth" ColumnName="dateBirth" />
-                <ScalarProperty Name="countryNationality" ColumnName="countryNationality" />
-                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
-                <ScalarProperty Name="visaNumberType" ColumnName="visaNumberType" />
-                <ScalarProperty Name="emergencyContactCountryFk" ColumnName="emergencyContactCountryFk" />
-                <ScalarProperty Name="emergencyContactUSFk" ColumnName="emergencyContactUSFk" />
-                <ScalarProperty Name="medicalDetailsFK" ColumnName="medicalDetailsFK" />
-                <ScalarProperty Name="covidVaccineFK" ColumnName="covidVaccineFK" />
                 <ScalarProperty Name="recordDate" ColumnName="recordDate" />
+                <ScalarProperty Name="covidVaccineFK" ColumnName="covidVaccineFK" />
+                <ScalarProperty Name="medicalDetailsFK" ColumnName="medicalDetailsFK" />
+                <ScalarProperty Name="emergencyContactUSFk" ColumnName="emergencyContactUSFk" />
+                <ScalarProperty Name="emergencyContactCountryFk" ColumnName="emergencyContactCountryFk" />
+                <ScalarProperty Name="visaNumberType" ColumnName="visaNumberType" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="countryNationality" ColumnName="countryNationality" />
+                <ScalarProperty Name="dateBirth" ColumnName="dateBirth" />
+                <ScalarProperty Name="genderFk" ColumnName="genderFk" />
+                <ScalarProperty Name="whatsapp" ColumnName="whatsapp" />
+                <ScalarProperty Name="mobilePhone" ColumnName="mobilePhone" />
+                <ScalarProperty Name="addressUS" ColumnName="addressUS" />
+                <ScalarProperty Name="addressCountry" ColumnName="addressCountry" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="IAGModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
