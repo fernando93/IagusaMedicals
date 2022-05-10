@@ -25,6 +25,7 @@
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_Gender" />
         <AssociationConnector Association="IAGModel.FK_PersonalInformation_MedicalDetails" />
         <AssociationConnector Association="IAGModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="IAGModel.ExceptionIAGUSA" Width="1.5" PointX="8.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

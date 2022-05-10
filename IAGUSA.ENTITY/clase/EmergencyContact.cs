@@ -13,8 +13,14 @@ namespace IAGUSA.ENTITY
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class PersonalInformation
+    public partial class EmergencyContact
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmergencyContact()
+        {
+            this.PersonalInformation = new HashSet<PersonalInformation>();
+        }
+
         public int id { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string firstName { get; set; }
@@ -22,29 +28,15 @@ namespace IAGUSA.ENTITY
         public string lastName { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string addressCountry { get; set; }
-        public string addressUS { get; set; }
         [Required(ErrorMessage = "This value is required")]
         public string mobilePhone { get; set; }
         public string whatsapp { get; set; }
-        public int genderFk { get; set; }
         [Required(ErrorMessage = "This value is required")]
-        public System.DateTime dateBirth { get; set; }
+        public string relationship { get; set; }
         [Required(ErrorMessage = "This value is required")]
-        public string countryNationality { get; set; }
-        [Required(ErrorMessage = "This value is required")]
-        public string PassportNumber { get; set; }
-        [Required(ErrorMessage = "This value is required")]
-        public string visaNumberType { get; set; }
-        public int emergencyContactCountryFk { get; set; }
-        public int emergencyContactUSFk { get; set; }
-        public int medicalDetailsFK { get; set; }
-        public Nullable<int> covidVaccineFK { get; set; }
-        public Nullable<System.DateTime> recordDate { get; set; }
-    
-        public virtual CovidVaccineRecord CovidVaccineRecord { get; set; }
-        public virtual EmergencyContact EmergencyContact { get; set; }
-        public virtual EmergencyContactUS EmergencyContactUS { get; set; }
-        public virtual Gender Gender { get; set; }
-        public virtual MedicalDetails MedicalDetails { get; set; }
+        public string email { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PersonalInformation> PersonalInformation { get; set; }
     }
 }

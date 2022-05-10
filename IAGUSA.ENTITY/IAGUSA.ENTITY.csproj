@@ -86,6 +86,9 @@
     <Compile Include="EmergencyContactUS.cs">
       <DependentUpon>ModelIAGUSA.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExceptionIAGUSA.cs">
+      <DependentUpon>ModelIAGUSA.tt</DependentUpon>
+    </Compile>
     <Compile Include="Gender.cs">
       <DependentUpon>ModelIAGUSA.tt</DependentUpon>
     </Compile>

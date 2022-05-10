@@ -37,5 +37,6 @@ namespace IAGUSA.ENTITY
         public virtual DbSet<HostSchool> HostSchool { get; set; }
         public virtual DbSet<MedicalDetails> MedicalDetails { get; set; }
         public virtual DbSet<PersonalInformation> PersonalInformation { get; set; }
+        public virtual DbSet<ExceptionIAGUSA> ExceptionIAGUSA { get; set; }
     }
 }

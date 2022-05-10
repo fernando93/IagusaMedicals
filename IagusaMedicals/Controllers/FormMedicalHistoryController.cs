@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Web;
@@ -80,6 +81,7 @@ namespace IagusaMedicals.Controllers
                     }
                 }
 
+                medical.personal.addressUS = medical.address + " " + medical.city + " " + medical.state + " " + medical.zipcode;
                 medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
                 medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
                 medical.medicalDetails.allergies = Convert.ToBoolean(medical.medicalDetails.allergies);
@@ -91,7 +93,26 @@ namespace IagusaMedicals.Controllers
                 medical.personal.medicalDetailsFK = medical.medicalDetails.id;
                 medical.personal.recordDate = DateTime.Now;
                 db.PersonalInformation.Add(medical.personal);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        ExceptionIAGUSA excep = new ExceptionIAGUSA();
+                        excep.exceptionEntity = "Entity of type " + eve.Entry.Entity.GetType().Name + " in state " + eve.Entry.State + " has the following validation errors:";
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            IAGEntities1 dbexecp = new IAGEntities1();
+                            excep.exceptionProperty = "- Property: " + ve.PropertyName + ", Error: " + ve.ErrorMessage;
+                            dbexecp.ExceptionIAGUSA.Add(excep);
+                            dbexecp.SaveChanges();
+                        }
+                    }
+                    return View();
+                }
                 ViewBag.SuccessMsg = "successfully added, I apreciate it!";
                 return RedirectToAction("Finalizacion");
             }else

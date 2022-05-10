@@ -106,6 +106,14 @@
           <Property Name="relationship" Type="varchar" MaxLength="40" />
           <Property Name="email" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ExceptionIAGUSA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="exceptionEntity" Type="varchar" MaxLength="650" Nullable="false" />
+          <Property Name="exceptionProperty" Type="varchar" MaxLength="650" Nullable="false" />
+        </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="id" />
@@ -311,6 +319,7 @@
           <EntitySet Name="CovidVaccineRecord" EntityType="Self.CovidVaccineRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmergencyContact" EntityType="Self.EmergencyContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmergencyContactUS" EntityType="Self.EmergencyContactUS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExceptionIAGUSA" EntityType="Self.ExceptionIAGUSA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HostSchool" EntityType="Self.HostSchool" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedicalDetails" EntityType="Self.MedicalDetails" Schema="dbo" store:Type="Tables" />
@@ -401,6 +410,7 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="ExceptionIAGUSA" EntityType="IAGModel.ExceptionIAGUSA" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -682,6 +692,14 @@
           <End Type="IAGModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
           <End Type="IAGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
+        <EntityType Name="ExceptionIAGUSA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="exceptionEntity" Type="String" Nullable="false" MaxLength="650" FixedLength="false" Unicode="false" />
+          <Property Name="exceptionProperty" Type="String" Nullable="false" MaxLength="650" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -877,6 +895,15 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ExceptionIAGUSA">
+            <EntityTypeMapping TypeName="IAGModel.ExceptionIAGUSA">
+              <MappingFragment StoreEntitySet="ExceptionIAGUSA">
+                <ScalarProperty Name="exceptionProperty" ColumnName="exceptionProperty" />
+                <ScalarProperty Name="exceptionEntity" ColumnName="exceptionEntity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
